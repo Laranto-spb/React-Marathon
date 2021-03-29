@@ -27,7 +27,7 @@ const StartPage = () => {
         return () => {
             firebase.offPokemonSoket();
         }
-    });
+    }, []);
 
     //Adding active state to Pokemon
     const handlerClicker = (key) => {
@@ -37,14 +37,13 @@ const StartPage = () => {
 
     //Go to Board Page
     const handlerStartButton = () => {
-        history.push('game/board');
+        history.push('/game/board');
     }
 
     //Add selected pokemon to state in GamePage
     const handlerSelect = (key) => {
         const pokemon = {...pokemons[key]};
         selectedPokemons.onSelectedPokemon(key, pokemon);
-        // selectedPokemons.pokemons.push(pokemons[key]);
     }
 
     return (
@@ -61,7 +60,6 @@ const StartPage = () => {
                         <PokemonCard
                             key={key}
                             className={s.card}
-                            minimize
                             pokemonKey={key}
                             name={item.name}
                             img={item.img}
@@ -71,13 +69,12 @@ const StartPage = () => {
                             onClickCard={handlerClicker}
                             onSelectCard={() => {
                                 if (Object.keys(selectedPokemons.pokemons).length < 5) {
-                                    handlerSelect(key)
+                                    handlerSelect(key);
                                 }
                             }
                             }
                             // isActive={item.active}
                             isActive={true}
-                            isSelected={item.selected}
                         />
                     )
                 }

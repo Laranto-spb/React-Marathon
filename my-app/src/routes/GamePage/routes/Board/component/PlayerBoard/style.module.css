@@ -1,0 +1,17 @@
+.cardBoard {
+    height: 14.8vw;
+    margin-top: -6vw;
+    width: 100%;
+    max-width: 18vw;
+    cursor: pointer;
+}
+
+
+
+.cardBoard:first-child {
+    margin-top: 0;
+}
+
+.cardBoard.selected {
+    margin-left: -20px;
+}

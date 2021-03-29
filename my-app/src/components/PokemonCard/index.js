@@ -13,12 +13,13 @@ const PokemonCard = ({
                          onClickCard,
                          onSelectCard,
                          isActive,
-                         isSelected
+                         isSelected,
+                         possession
                      }) => {
 
     const handleClicker = () => {
-        onClickCard(pokemonKey);
-        onSelectCard(pokemonKey);
+        onClickCard && onClickCard(pokemonKey);
+        onSelectCard && onSelectCard(pokemonKey);
     }
 
     return (
@@ -27,7 +28,7 @@ const PokemonCard = ({
                  onClick={handleClicker}>
                 <div className={s.cardFront}>
                     <div className={cn(s.wrap, s.front)}>
-                        <div className={cn(s.pokemon, s[type])}>
+                        <div className={cn(s.pokemon, s[type], s[possession])}>
                             <div className={s.values}>
                                 <div className={cn(s.count, s.top)}>{values.top}</div>
                                 <div className={cn(s.count, s.right)}>{values.right}</div>
